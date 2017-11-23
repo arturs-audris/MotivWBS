@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>MotivWBS</title>
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div class="heading">TODO List</div>
