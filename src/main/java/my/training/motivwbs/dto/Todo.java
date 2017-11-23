@@ -36,10 +36,10 @@ public class Todo {
 
     @Override
     public String toString() {
-        return "Todo{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", dueDate='" + dueDate + '\'' +
+        return "{ " +
+                "\"id\":" + id +
+                ", \"description\":\"" + description + '\"' +
+                ", \"dueDate\":\"" + dueDate + '\"' +
                 '}';
     }
 }
