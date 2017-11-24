@@ -1,5 +1,6 @@
 package my.training.motivwbs.controllers;
 
+import my.training.motivwbs.dto.Todo;
 import my.training.motivwbs.repo.TodoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +14,8 @@ public class Tasks {
     private TodoRepo repo;
 
     @RequestMapping(value = "/todo", method = RequestMethod.GET, produces = "application/json")
-    public String save() {
-        return repo.findAll().toString();
+    public Iterable<Todo> getTodoList() {
+        return repo.findAll();
     }
 
 }

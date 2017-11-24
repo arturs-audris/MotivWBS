@@ -13,11 +13,13 @@ public class Todo {
     private long id;
     private String description;
     private String dueDate;
+    private boolean completed;
 
-    public Todo(long id, String description, String dueDate) {
+    public Todo(long id, String description, String dueDate, boolean completed) {
         this.id = id;
         this.description = description;
         this.dueDate = dueDate;
+        this.completed = completed;
     }
 
     protected Todo() {}
@@ -34,12 +36,17 @@ public class Todo {
         return dueDate;
     }
 
+    public boolean isCompleted() {
+        return completed;
+    }
+
     @Override
     public String toString() {
-        return "{ " +
-                "\"id\":" + id +
-                ", \"description\":\"" + description + '\"' +
-                ", \"dueDate\":\"" + dueDate + '\"' +
+        return "Todo{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", dueDate='" + dueDate + '\'' +
+                ", completed=" + completed +
                 '}';
     }
 }
