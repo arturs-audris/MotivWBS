@@ -1,3 +1,61 @@
-.heading {
-    font-size: 2.5em;
+header {
+    width: 100%;
+    height: 150px;
+    top: 0px;
+    left: 0px;
+    background-color: #20c997;
+}
+
+
+header h1#logo {
+    height: 150px;
+    float: left;
+    font-size: 60px;
+    display: inline-block;
+    line-height: 150px;
+}
+
+#wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.table-filter tbody tr td {
+    padding: 10px;
+    vertical-align: middle;
+    border-bottom: 1px solid #e2e6ea;
+}
+
+.panel {
+    border: 1px solid #dddddd;
+    background-color: #fcfcfc;
+}
+
+.overdue {
+    background-color: #dc3545;
+    color: #e2e6ea;
+}
+
+.finished {
+    background-color: #1e7e34;
+}
+
+.pending {
+    background-color: #e0a800;
+}
+
+.panel .btn-group {
+    margin: 15px 15px 30px;
+}
+
+.panel .btn-group .btn {
+    transition: background-color .3s ease;
+}
+
+body {
+    font-family: "Verdana";
+}
+
+.pull-right {
+    float: right;
 }
