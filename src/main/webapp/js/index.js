@@ -85,6 +85,7 @@ $('#addNewTodo').submit(function(e) {
         type: form.attr('method'),
         url: form.attr('action'),
         dataType: 'json',
+        contentType: 'application/json',
         data: JSON.stringify(formData),
     });
 
