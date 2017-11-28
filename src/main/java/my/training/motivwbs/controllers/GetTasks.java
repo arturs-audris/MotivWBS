@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Tasks {
+public class GetTasks {
 
     @Autowired
-    private TodoRepo repo;
+    private TodoRepo taskRepository;
 
     @RequestMapping(value = "/todo", method = RequestMethod.GET, produces = "application/json")
     public Iterable<Todo> getTodoList() {
-        return repo.findAll();
+        return taskRepository.findAll();
     }
 
 }

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 
 <head>
@@ -49,6 +50,21 @@
                         </div>
                     </div>
                 </div>
+            </section>
+            <section>
+                <form id="addNewTodo" method="post" action="/addTodo">
+                    <table>
+                        <tr>
+                           <td><input type="text" id="description"></td>
+                        </tr>
+                        <tr>
+                           <td><input type="text" id="dueDate"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Add Task"></td>
+                        </tr>
+                    </table>
+                </form>
             </section>
         </div>
     </div>

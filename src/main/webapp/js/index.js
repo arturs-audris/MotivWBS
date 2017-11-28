@@ -73,4 +73,20 @@ $(document).ready(function () {
     });
 });
 
+$('#addNewTodo').submit(function(e) {
+    var form = this;
+    e.preventDefault();
+    var formData = {}
+    $.each(this, function (i, v) {
+        var input = $(v);
+        formData[input.attr("id")] = input.val();
+    });
+    $.ajax({
+        type: form.attr('method'),
+        url: form.attr('action'),
+        dataType: 'json',
+        data: JSON.stringify(formData),
+    });
+
+});
 
