@@ -15,7 +15,9 @@ public class AddTask {
     @Autowired
     TodoRepo taskRepository;
 
-    @RequestMapping(value = "/addTodo", method = RequestMethod.POST)
+    @RequestMapping(value = "/addTodo",
+            method = RequestMethod.POST,
+            consumes = "text/plain")
     public String addTodo(@RequestBody Todo todo) {
         taskRepository.save(todo);
         return "index";
