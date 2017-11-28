@@ -5,11 +5,13 @@
 
 <head>
     <title>MotivWBS</title>
+    <script src="<c:url value="/js/cleave.min.js" />"></script>
     <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet" type="text/css">
     <link href="<c:url value="/css/index.css" />" rel="stylesheet" type="text/css">
     <script src="<c:url value="/js/jquery-3.2.1.min.js" />"></script>
     <script src="<c:url value="/js/bootstrap.bundle.min.js" />"></script>
     <script src="<c:url value="/js/index.js" />"></script>
+
 </head>
 <body>
 <div id="wrapper">
@@ -55,10 +57,10 @@
                 <form id="addNewTodo" method="post" action="/addTodo">
                     <table>
                         <tr>
-                           <td><input type="text" id="description"></td>
+                           <td><input type="text" name="description"></td>
                         </tr>
                         <tr>
-                           <td><input type="text" id="dueDate"></td>
+                           <td><input type="text" name="dueDate" class="formattedDate"></td>
                         </tr>
                         <tr>
                             <td><input type="submit" value="Add Task"></td>
@@ -69,5 +71,10 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+
+</script>
 </body>
 </html>

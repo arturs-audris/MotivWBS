@@ -10,6 +10,8 @@ function tableCreate(data) {
     td.appendChild(document.createTextNode("Description"));
     var td = tr.insertCell();
     td.appendChild(document.createTextNode("Due Date"));
+    var td = tr.insertCell();
+    td.appendChild(document.createTextNode("Delete"));
 
     var today = new Date();
     var dd = today.getDate();
@@ -28,7 +30,8 @@ function tableCreate(data) {
 
     for (var i = 0; i < data.length; i++) {
         var tr = tbl.insertRow();
-        for (var j = 0; j < 3; j++) {
+        tr.setAttribute("id", data[i].id);
+        for (var j = 0; j < 4; j++) {
             if (i == data.length && j == 1) {
                 break;
             } else {
@@ -61,6 +64,13 @@ function tableCreate(data) {
                     }
 
                 }
+
+                if (j == 3) {
+                    var btn = document.createElement("BUTTON");
+                    btn.appendChild(document.createTextNode("Delete"));
+                    td.appendChild(btn);
+                    btn.setAttribute("onclick", "removeTodo(this)");
+                }
             }
         }
     }
@@ -68,30 +78,56 @@ function tableCreate(data) {
 }
 
 $(document).ready(function () {
+    var cleave = new Cleave('.formattedDate', {
+        date: true
+    });
+
     $.getJSON("/todo.json", function (data) {
         tableCreate(data)
     });
+sendNewEntry();
+
 });
 
-$('#addNewTodo').submit(function(e) {
-    var form = this;
-    e.preventDefault();
-    var formData = {}
-    $.each(this, function (i, v) {
-        var input = $(v);
-        formData[input.attr("id")] = input.val();
+function sendNewEntry() {
+    var frm = $('#addNewTodo');
+    frm.submit(function (e) {
+        e.preventDefault();
+        var output = frm.serializeArray()
+            .reduce(function(a, x) { a[x.name] = x.value; return a; }, {});
+        console.log(JSON.stringify(output));
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: JSON.stringify(output),
+            contentType: 'application/json',
+            success: function (data) {
+                console.log('Submission was successful.');
+                location.reload(true);
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+            },
+        });
     });
+}
+
+function removeTodo(element) {
+    var row = element.parentNode.parentNode;
     $.ajax({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+        type: 'POST',
+        url: '/removeTodo/'+row.id,
+        data: JSON.stringify(row.id),
+        contentType: 'application/json',
+        success: function (data) {
+            console.log('Submission was successful.');
+            location.reload(true);
         },
-        type: form.attr('method'),
-        url: form.attr('action'),
-        dataType: 'json',
-        contentType: 'text/plain',
-        data: $.toJSON(formData),
+        error: function (data) {
+            console.log('An error occurred.');
+        },
     });
+}
 
-});
+
 
