@@ -1,4 +1,4 @@
-package my.training.motivwbs;
+package my.training.motivwbs.configs;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
