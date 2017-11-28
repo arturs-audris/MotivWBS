@@ -84,7 +84,7 @@ $('#addNewTodo').submit(function(e) {
     $.ajax({
         type: form.attr('method'),
         url: form.attr('action'),
-        dataType: 'json',
+        dataType: 'xml/html/script/json',
         contentType: 'application/json',
         data: JSON.stringify(formData),
     });
