@@ -82,6 +82,10 @@ $('#addNewTodo').submit(function(e) {
         formData[input.attr("id")] = input.val();
     });
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
         type: form.attr('method'),
         url: form.attr('action'),
         dataType: 'json',
