@@ -17,7 +17,7 @@ public class AddTask {
 
     @RequestMapping(value = "/addTodo",
             method = RequestMethod.POST,
-            consumes = "text/plain")
+            consumes = "application/x-www-form-urlencoded")
     public String addTodo(@RequestBody Todo todo) {
         taskRepository.save(todo);
         return "index";
