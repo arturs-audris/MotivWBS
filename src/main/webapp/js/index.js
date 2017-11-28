@@ -69,6 +69,7 @@ function tableCreate(data) {
                     var btn = document.createElement("BUTTON");
                     btn.appendChild(document.createTextNode("Delete"));
                     td.appendChild(btn);
+                    btn.setAttribute("class", "btn-block btn");
                     btn.setAttribute("onclick", "removeTodo(this)");
                 }
             }

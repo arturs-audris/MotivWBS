@@ -38,7 +38,7 @@
                                     <button type="button" class="btn btn-warning btn-filter" data-target="pending">
                                         Pending
                                     </button>
-                                    <button type="button" class="btn btn-default btn-filter" data-target="all">All
+                                    <button type="button" class="btn btn-info btn-filter" data-target="all">All
                                     </button>
                                 </div>
                             </div>
@@ -55,17 +55,22 @@
             </section>
             <section>
                 <form id="addNewTodo" method="post" action="/addTodo">
-                    <table>
-                        <tr>
-                           <td><input type="text" name="description"></td>
-                        </tr>
-                        <tr>
-                           <td><input type="text" name="dueDate" class="formattedDate"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" value="Add Task"></td>
-                        </tr>
-                    </table>
+                    <div class="col-md-2 form-line">
+                        <div class="form-group">
+                            <label for="inputDueDate">Due Date</label>
+                            <input type="text" name="dueDate" class="formattedDate form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="inputDescription">Description</label>
+                            <input type="text" name="description" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                            <input type="submit" class="btn btn-default" value="Add Task">
+                    </div>
+
                 </form>
             </section>
         </div>

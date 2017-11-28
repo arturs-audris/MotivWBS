@@ -6,6 +6,9 @@ header {
     background-color: #20c997;
 }
 
+.form-group{
+    margin-top: 10px;
+}
 
 header h1#logo {
     height: 150px;
