@@ -1,15 +1,13 @@
 package my.training.motivwbs.controllers;
 
-import my.training.motivwbs.dto.Todo;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Index {
+public class LandingPageController {
 
     @RequestMapping("/")
-    public String landing(Model model) {
+    public String landing() {
         return "index";
     }
 

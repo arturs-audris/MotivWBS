@@ -54,17 +54,17 @@
                 </div>
             </section>
             <section>
-                <form id="addNewTodo" method="post" action="/addTodo">
+                <form id="addNewTodo" method="post">
                     <div class="col-md-2 form-line">
                         <div class="form-group">
-                            <label for="inputDueDate">Due Date</label>
-                            <input type="text" name="dueDate" class="formattedDate form-control">
+                            <label for="dueDate">Due Date</label>
+                            <input type="text" name="dueDate" id="dueDate" class="formattedDate form-control">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="inputDescription">Description</label>
-                            <input type="text" name="description" class="form-control">
+                            <label for="description">Description</label>
+                            <input type="text" name="description" id="description" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-1">

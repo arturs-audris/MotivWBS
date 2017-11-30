@@ -1,7 +1,6 @@
 package my.training.motivwbs.dto;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,8 +24,6 @@ public class Todo {
         this.dueDate = dueDate;
         this.completed = completed;
     }
-
-    public Todo() {}
 
     public long getId() {
         return id;

@@ -8,10 +8,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GetTasks {
+public class GetAllTodoController {
+
+
+    private final TodoRepo taskRepository;
 
     @Autowired
-    private TodoRepo taskRepository;
+    public GetAllTodoController(TodoRepo taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     @RequestMapping(value = "/todo", method = RequestMethod.GET, produces = "application/json")
     public Iterable<Todo> getTodoList() {

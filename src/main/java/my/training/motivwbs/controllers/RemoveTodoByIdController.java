@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class RemoveTask {
+public class RemoveTodoByIdController {
+
+    private final TodoRepo taskRepository;
 
     @Autowired
-    TodoRepo taskRepository;
+    public RemoveTodoByIdController(TodoRepo taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(value = "/removeTodo/{id}")
