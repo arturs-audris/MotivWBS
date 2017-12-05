@@ -1,18 +1,17 @@
 package my.training.motivwbs.dto;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table
 public class Todo {
 
     @Id
     @GeneratedValue
-    @JsonIgnore
     private long id;
     private String description;
     private String dueDate;

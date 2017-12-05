@@ -5,13 +5,11 @@
 
 <head>
     <title>MotivWBS</title>
-    <script src="<c:url value="/js/cleave.min.js" />"></script>
-    <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet" type="text/css">
-    <link href="<c:url value="/css/index.css" />" rel="stylesheet" type="text/css">
-    <script src="<c:url value="/js/jquery-3.2.1.min.js" />"></script>
-    <script src="<c:url value="/js/bootstrap.bundle.min.js" />"></script>
-    <script src="<c:url value="/js/index.js" />"></script>
-
+    <script src="<c:url value="/static/js/cleave.min.js" />"></script>
+    <link href="<c:url value="/static/css/bootstrap.min.css" />" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/static/css/index.css" />" rel="stylesheet" type="text/css">
+    <script src="<c:url value="/static/js/jquery-3.2.1.min.js" />"></script>
+    <script src="<c:url value="/static/js/bootstrap.bundle.min.js" />"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -68,7 +66,7 @@
                         </div>
                     </div>
                     <div class="col-md-1">
-                            <input type="submit" class="btn btn-default" value="Add Task">
+                        <input type="submit" class="btn btn-default" value="Add Task">
                     </div>
 
                 </form>
@@ -77,9 +75,16 @@
     </div>
 </div>
 
+<div class="container authenticated" style="display:none">
+    Logged in as: <span id="user"></span>
+</div>
+
 <script type="text/javascript">
-
-
+    $.get("/user", function(data) {
+        $("#user").html(data.userAuthentication.details.name);
+        $(".unauthenticated").hide()
+        $(".authenticated").show()
+    });
 </script>
 </body>
 </html>

@@ -12,7 +12,7 @@ public class ValidateDateFormat {
         SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
         try {
             dateFormat.parse(input);
-            return  true;
+            return true;
         } catch (ParseException e) {
             return false;
         }
