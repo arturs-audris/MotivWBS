@@ -66,10 +66,6 @@ function addTodoToTable(data) {
 }
 
 jQuery(function () {
-    new Cleave('.formattedDate', {
-        date: true
-    });
-
     tableCreate();
 
     $.get("/user", function(user) {
@@ -78,7 +74,7 @@ jQuery(function () {
         $.getJSON("/todo.json?id="+userID, function (data) {
             addTodoToTable(data);
         });
-        removeTodo(userID);
+        removeTodo();
         sendNewEntry(userID);
     });
 
@@ -125,7 +121,7 @@ function sendNewEntry(userId) {
                 location.reload(true);
             },
             error: function () {
-                console.log('An error occurred.');
+                console.log('An error occurred');
             }
         });
     });
@@ -133,7 +129,6 @@ function sendNewEntry(userId) {
 
 function removeTodo() {
     $(document.body).on('click', ".removeTodo", function () {
-        console.log("clicked");
         var row = this.parentNode.parentNode;
         $.ajax({
             type: 'POST',

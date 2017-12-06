@@ -24,11 +24,14 @@ public class AddTodoController {
 
     @RequestMapping(value = "/addTodo", method = RequestMethod.POST)
     public String addTodo(@RequestBody Todo todo, @RequestParam("id") long id) {
+        if(todo.getDueDate()!=null) {
         if (dateFormatValidator.isValidDate(todo.getDueDate())) {
             todo.setUserId(id);
             repository.save(todo);
+        }} else {
+            System.out.println(todo.toString());
         }
-        return "home";
+        return "test";
     }
 
 }

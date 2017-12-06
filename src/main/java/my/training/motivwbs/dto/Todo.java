@@ -12,7 +12,6 @@ public class Todo {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @JsonIgnore
     private long id;
     private String description;
     private String dueDate;
@@ -29,6 +28,11 @@ public class Todo {
         this.userId = userId;
     }
 
+    @JsonIgnore
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public void setUserId(long userId) {
         this.userId = userId;
     }
@@ -36,6 +40,7 @@ public class Todo {
     public Todo() {
     }
 
+    @JsonProperty
     public long getId() {
         return id;
     }
