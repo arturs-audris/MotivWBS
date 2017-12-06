@@ -3,9 +3,7 @@ package my.training.motivwbs.controllers;
 import my.training.motivwbs.dto.Todo;
 import my.training.motivwbs.repositaries.TodoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GetAllTodoController {
@@ -19,8 +17,8 @@ public class GetAllTodoController {
     }
 
     @RequestMapping(value = "/todo", method = RequestMethod.GET, produces = "application/json")
-    public Iterable<Todo> getTodoList() {
-        return taskRepository.findAll();
+    public @ResponseBody Iterable<Todo> getTodoList(@RequestParam("id") long currentUserId) {
+        return taskRepository.findByUserId(currentUserId);
     }
 
 }

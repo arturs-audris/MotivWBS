@@ -2,10 +2,8 @@ function tableCreate() {
     var root = document.getElementById("todoTable");
     var table = document.createElement('table');
     table.setAttribute("id", "todoEntries");
-    table.setAttribute("class", "table table-filter");
+    table.setAttribute("class", "table table-filter w-auto");
     var headingRow = table.insertRow();
-    var idCell = headingRow.insertCell(-1);
-    idCell.appendChild(document.createTextNode("ID"));
     var descriptionCell = headingRow.insertCell(-1);
     descriptionCell.appendChild(document.createTextNode("Description"));
     var dueDateCell = headingRow.insertCell(-1);
@@ -25,18 +23,15 @@ function addTodoToTable(data) {
         var dynamicRow = table.insertRow();
         dynamicRow.setAttribute("id", data[i].id);
 
-        for (var j = 0; j < 4; j++) {
+        for (var j = 0; j < 3; j++) {
             if (i === data.length && j === 1) {
                 break;
             } else {
                 var dynamicCell = dynamicRow.insertCell(-1);
                 if (j === 0) {
-                    dynamicCell.appendChild(document.createTextNode(data[i].id));
-                }
-                if (j === 1) {
                     dynamicCell.appendChild(document.createTextNode(data[i].description));
                 }
-                if (j === 2) {
+                if (j === 1) {
                     dynamicCell.appendChild(document.createTextNode(data[i].dueDate));
                     var dueMonth = data[i].dueDate.substr(0, 2);
                     var dueDay = data[i].dueDate.substr(3, 2);
@@ -59,7 +54,7 @@ function addTodoToTable(data) {
 
                 }
 
-                if (j === 3) {
+                if (j === 2) {
                     var deleteButton = document.createElement("BUTTON");
                     deleteButton.appendChild(document.createTextNode("Delete"));
                     dynamicCell.appendChild(deleteButton);
@@ -74,12 +69,20 @@ jQuery(function () {
     new Cleave('.formattedDate', {
         date: true
     });
+
     tableCreate();
-    $.getJSON("/todo.json", function (data) {
-        addTodoToTable(data);
+
+    $.get("/user", function(user) {
+        var userID = user.userAuthentication.details.id;
+        console.log(userID);
+        $.getJSON("/todo.json?id="+userID, function (data) {
+            addTodoToTable(data);
+        });
+        removeTodo(userID);
+        sendNewEntry(userID);
     });
-    removeTodo();
-    sendNewEntry();
+
+
 
 
 });
@@ -102,7 +105,7 @@ function getTodaysDate() {
     return todaysDate;
 }
 
-function sendNewEntry() {
+function sendNewEntry(userId) {
     var frm = $('#addNewTodo');
     frm.submit(function (e) {
         e.preventDefault();
@@ -114,7 +117,7 @@ function sendNewEntry() {
         console.log(JSON.stringify(output));
         $.ajax({
             type: 'POST',
-            url: '/addTodo',
+            url: '/addTodo?id='+userId,
             data: JSON.stringify(output),
             contentType: 'application/json',
             success: function () {

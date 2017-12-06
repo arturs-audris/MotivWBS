@@ -15,9 +15,11 @@
 
 <div class="container unauthenticated">
     With Facebook: <a href="/login/facebook">click here</a>
+
 </div>
 <div class="container authenticated">
     Logged in as: <span id="user"></span>
+    To Todo <a href="/home">Meh</a>
     <div>
         <button onClick="logout()" class="btn btn-primary">Logout</button>
     </div>
@@ -32,12 +34,6 @@
         });
     });
 
-
-    $.get("/user", function(data) {
-        $("#user").html(data.userAuthentication.details.name);
-        $(".unauthenticated").hide();
-        $(".authenticated").show();
-    });
     var logout = function() {
         $.post("/logout", function() {
             $("#user").html('');
@@ -46,6 +42,8 @@
         })
         return true;
     }
+
+
 </script>
 </body>
 </html>

@@ -9,7 +9,9 @@ header {
 .form-group {
     margin-top: 10px;
 }
-
+.w-auto {
+    width: auto;
+}
 header h1#logo {
     height: 150px;
     float: left;
