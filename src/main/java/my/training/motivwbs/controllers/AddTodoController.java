@@ -31,7 +31,7 @@ public class AddTodoController {
         }} else {
             System.out.println(todo.toString());
         }
-        return "test";
+        return "todo";
     }
 
 }

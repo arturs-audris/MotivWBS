@@ -130,6 +130,16 @@ function createTaskCloseButton() {
     return closeButton;
 }
 
+function createTaskFinishedButton(task) {
+    var finishedButton = document.createElement("button");
+    finishedButton.setAttribute("type", "button");
+    finishedButton.setAttribute("class", "btn btn-success pull-left");
+    finishedButton.setAttribute("data-dismiss", "modal");
+    finishedButton.setAttribute("onclick", "finishTodo(this)");
+    finishedButton.setAttribute("id", "f"+task.id);
+    finishedButton.appendChild(document.createTextNode("Finished"));
+}
+
 function createTaskDeleteButton(task) {
     var deleteButton = document.createElement("button");
     deleteButton.setAttribute("type", "button");
@@ -174,7 +184,9 @@ function createPopupForm(task) {
 
     footer.appendChild(createTaskDeleteButton(task));
     footer.appendChild(createTaskCloseButton());
-
+    if (getTaskStatus(task) !== "DONE") {
+        footer.appendChild(createTaskFinishedButton(task));
+    }
     return popupForm;
 }
 
@@ -224,6 +236,21 @@ function removeTodo(row) {
             error: function () {
             }
         });
+}
+
+function finishTodo(row) {
+    var taskId = row.getAttribute("id").substr(1, row.length);
+    $.ajax({
+        type: 'POST',
+        url: '/finishTodo/' + taskId,
+        data: JSON.stringify(taskId),
+        contentType: 'application/json',
+        success: function () {
+            location.reload(true);
+        },
+        error: function () {
+        }
+    });
 }
 
 jQuery(function () {
