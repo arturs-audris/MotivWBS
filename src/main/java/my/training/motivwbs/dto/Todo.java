@@ -15,15 +15,25 @@ public class Todo {
     private long id;
     private String description;
     private String dueDate;
+    private String title;
     @JsonProperty(required=false)
     private boolean completed;
     @JsonProperty(required=false)
     private long userId;
 
-    public Todo(long id, String description, String dueDate, boolean completed, long userId) {
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Todo(long id, String description, String dueDate, String title, boolean completed, long userId) {
         this.id = id;
         this.description = description;
         this.dueDate = dueDate;
+        this.title = title;
         this.completed = completed;
         this.userId = userId;
     }
